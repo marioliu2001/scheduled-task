@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://39.105.229.250:3306/scheduling?useUnicode=true&characterEncoding=utf-8
+    username: admin
+    password: LXL521521521
+  jpa:
+    database-platform: mysql
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
