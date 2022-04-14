@@ -22,12 +22,13 @@ import java.util.List;
 public class SysJobController {
     @Autowired
     SysJobService sysJobService;
-    @GetMapping("/")
+
+    @GetMapping("/getAll")
     public List<SysJob> getAllJobs() {
         return sysJobService.getAllJobs();
     }
 
-    @PostMapping("/")
+    @PostMapping("/add")
     public RespBean addJob(@RequestBody SysJob sysJob) {
         Boolean flag = sysJobService.addJob(sysJob);
         if (flag) {
@@ -36,7 +37,7 @@ public class SysJobController {
         return RespBean.error("作业重复，添加失败");
     }
 
-    @PutMapping("/")
+    @PutMapping("/update")
     public RespBean updateJob(@RequestBody SysJob sysJob) {
         Boolean flag = sysJobService.updateJob(sysJob);
         if (flag) {
@@ -45,7 +46,7 @@ public class SysJobController {
         return RespBean.error("作业更新失败");
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping("/delete")
     public RespBean deleteJobs(Integer id) {
         Boolean flag = sysJobService.deleteJobsById(id);
         if (flag) {

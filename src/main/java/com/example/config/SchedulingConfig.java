@@ -20,7 +20,7 @@ public class SchedulingConfig {
     public TaskScheduler taskScheduler() {
         ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
 
-        taskScheduler.setPoolSize(4);
+        taskScheduler.setPoolSize(7);
         taskScheduler.setRemoveOnCancelPolicy(true);
         taskScheduler.setThreadNamePrefix("TaskSchedulerThreadPool-");
         return taskScheduler;

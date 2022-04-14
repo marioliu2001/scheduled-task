@@ -83,6 +83,10 @@
     <el-button size="mini" type="primary" @click="commitData">确 定</el-button>
   </span>
     </el-dialog>
+    <h2><a href="https://cron.qqe2.com/" target="_blank">Cron表达式网址</a></h2>
+    <h3>常用的cron表达式</h3>
+    <div>每秒执行一次</div>
+    <div>0/1 * * * * ? </div>
 </div>
 <script>
     new Vue({
@@ -110,7 +114,7 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    axios.delete("/jobs/?id="+data.jobId).then(resp=>{
+                    axios.delete("http://www.onefg.fun:8080/schedule/jobs/delete?id="+data.jobId).then(resp=>{
                         this.$notify({
                             title: resp.data.status==200?'成功':'失败',
                             message: resp.data.msg,
@@ -130,7 +134,7 @@
                 this.updateJob();
             },
             updateJob() {
-                axios.put("/jobs/",this.job).then(resp=>{
+                axios.put("http://www.onefg.fun:8080/schedule/jobs/update",this.job).then(resp=>{
                     if (resp.status == 200) {
                         this.$notify({
                             title: resp.data.status==200?'成功':'失败',
@@ -163,7 +167,7 @@
                     this.updateJob();
                     return;
                 }
-                axios.post("/jobs/",this.job).then(resp=>{
+                axios.post("http://www.onefg.fun:8080/schedule/jobs/add",this.job).then(resp=>{
                     if (resp.status == 200) {
                         this.$notify({
                             title: resp.data.status==200?'成功':'失败',
@@ -186,7 +190,7 @@
                 this.dialogVisible = true;
             },
             initJobs() {
-                axios.get("/jobs/").then(resp => {
+                axios.get("http://www.onefg.fun:8080/schedule/jobs/getAll").then(resp => {
                     if (resp.status == 200) {
                         this.jobs = resp.data;
                     }
